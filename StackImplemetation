@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<stdlib.h>
+int top=-1;
+int item;
+int i;
+int a[10];
+void push();
+void pop();
+void display();
+void palindrome();
+
+int main()
+{
+    int ch;
+    do{
+        printf("\n 1.PUSH \n 2.POP \n 3.DISPLAY \n 4.PALINDROME");
+        printf("Enter choice ");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+            push();
+            break;
+            case 2: 
+            pop();
+            break;
+            case 3:
+             display();
+            break;
+           case 4:
+           palindrome();
+           break;
+            default:
+            exit(0);
+        }
+        
+    }while(ch!=5);
+}
+void push()
+{
+    if(top>=10)
+    {
+        printf("Stack Overflow");
+    }
+    else
+    {
+     ++top;
+     printf("Enter element");
+     scanf("%d",&item);
+     a[top]=item;
+    }
+}
+void pop()
+{
+    if(top<0)
+    {
+        printf("Stack Underflow");
+    }
+    else
+    {
+        item=a[top];
+        printf("Deleted is %d", item);
+        top--;
+    }
+}
+void display()
+{
+    if(top<0)
+    {
+        printf("UNDERFLOW");
+    }
+    else
+    {
+        int i;
+        for(i=0;i<=top;i++)
+        {
+            printf("%d",a[i]);
+        }
+    }
+}
+
+void palindrome()
+{
+    int temp=top;
+    if(top!=-1)
+    {
+        for(i=0;i<top/2;i++)
+        {
+            if(a[i]!=a[temp--])
+            {
+                printf("Not a palindrome");
+                break;
+                }
+                else
+                {
+                    printf("Yes A Plaindrome");
+                }
+        }
+    }
+}
